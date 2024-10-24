@@ -1,36 +1,33 @@
 import { create } from "zustand";
 import { Infant, InfantScreening } from "../types/screening-types";
-import { defaultInfantData } from "../constants/screening-constants";
+import {
+  defaultInfantData,
+  defaultInfantScreeningData,
+} from "../constants/screening-constants";
 
 export type ScreeningStore = {
   infant: Infant;
-  monthlyScreenings: InfantScreening[];
+  screening: InfantScreening;
   willGetAiRecommendation: boolean;
   updateInfant: (infant: Infant) => void;
-  updateScreening: (screenings: InfantScreening[]) => void;
+  updateScreening: (screening: InfantScreening) => void;
   updateAiRecommendation: (willGetAiRecommendation: boolean) => void;
 };
 
 export const useScreeningStore = create<ScreeningStore>(set => ({
   infant: defaultInfantData,
-  monthlyScreenings: [],
+  screening: defaultInfantScreeningData,
   willGetAiRecommendation: false,
 
   updateInfant: (infant: Infant) => {
     set(state => {
-      return {
-        ...state,
-        infant: { ...state.infant, ...infant },
-      };
+      return { ...state, infant };
     });
   },
 
-  updateScreening: (screenings: InfantScreening[]) => {
+  updateScreening: (screening: InfantScreening) => {
     set(state => {
-      return {
-        ...state,
-        monthlyScreenings: [...state.monthlyScreenings, ...screenings],
-      };
+      return { ...state, screening };
     });
   },
 

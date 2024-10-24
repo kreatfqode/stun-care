@@ -9,21 +9,21 @@ import {
 export const defaultInfantData: Infant = {
   name: "",
   motherName: "",
-  gender: "Laki-laki",
+  jenis_kelamin: "L",
   fatherName: "",
-  birthDate: new Date().toISOString(),
-  birthWeight: 0,
+  umur_bulan: 0,
+  birthWeight: 1.0,
 };
 
 export const defaultInfantScreeningData: InfantScreening = {
   date: new Date().toISOString(),
   asiType: "Asi campur",
-  bodyCircumference: 0,
-  headCircumference: 0,
+  lingkar_kepala: 1.0,
+  berat_badan: 1.0,
   measurement: "Berdiri",
-  upperArmCircumference: 0,
+  tinggi_badan: 1.0,
 };
 
 export const asiList: Asi[] = ["Asi eksklusif", "Asi campur"];
-export const genders: Gender[] = ["Laki-laki", "Perempuan"];
+export const genders: Gender[] = ["L", "P"];
 export const measurementMethods: MeasurementMethod[] = ["Berdiri", "Telentang"];

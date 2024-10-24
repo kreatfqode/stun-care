@@ -11,6 +11,9 @@ importers:
       '@expo/vector-icons':
         specifier: ^14.0.2
         version: 14.0.4
+      '@react-native-community/datetimepicker':
+        specifier: 8.0.1
+        version: 8.0.1(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       '@react-navigation/native':
         specifier: ^6.0.2
         version: 6.1.18(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
@@ -62,6 +65,12 @@ importers:
       react-native-gesture-handler:
         specifier: ~2.16.1
         version: 2.16.2(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+      react-native-modal-datetime-picker:
+        specifier: ^18.0.0
+        version: 18.0.0(@react-native-community/datetimepicker@8.0.1(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))
+      react-native-month-year-picker:
+        specifier: ^1.9.0
+        version: 1.9.0(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       react-native-paper:
         specifier: ^5.12.5
         version: 5.12.5(react-native-safe-area-context@4.10.5(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-vector-icons@10.2.0)(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
@@ -77,6 +86,9 @@ importers:
       react-native-screens:
         specifier: 3.31.1
         version: 3.31.1(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+      react-native-stepper-ui:
+        specifier: ^0.0.9
+        version: 0.0.9
       react-native-vector-icons:
         specifier: ^10.2.0
         version: 10.2.0
@@ -1164,6 +1176,16 @@ packages:
     resolution: {integrity: sha512-hFJL4cgLPxncJJd/epQ4dHnMg5Jy/7Q56jFvA3MHViuKpzzfTCJCB+pGY54maZbtym53UJON9WTGpM3S81UfjQ==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@react-native-community/datetimepicker@8.0.1':
+    resolution: {integrity: sha512-4BO0t3geMNNw9cIIm9p9FNUzwMXexdzD4pAH0AaUAycs3BS71HLrX8jHbrI7nzq/+8O7cLAXn5Gudte+YpTV8Q==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+      react-native-windows: '*'
+    peerDependenciesMeta:
+      react-native-windows:
+        optional: true
 
   '@react-native/assets-registry@0.74.87':
     resolution: {integrity: sha512-1XmRhqQchN+pXPKEKYdpJlwESxVomJOxtEnIkbo7GAlaN2sym84fHEGDXAjLilih5GVPpcpSmFzTy8jx3LtaFg==}
@@ -3475,6 +3497,9 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  moment@2.30.1:
+    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
+
   mrmime@1.0.1:
     resolution: {integrity: sha512-hzzEagAgDyoU1Q6yg5uI+AorQgdvMCur3FcKf7NhMKWsaYg+RnbTyHRa/9IlLF9rf455MOCtcqqrQQ83pPP7Uw==}
     engines: {node: '>=10'}
@@ -3898,6 +3923,18 @@ packages:
     peerDependencies:
       react: ^16.6.0 || ^17.0.0 || ^18.0.0
 
+  react-native-modal-datetime-picker@18.0.0:
+    resolution: {integrity: sha512-0jdvhhraZQlRACwr7pM6vmZ2kxgzJ4CpnmV6J3TVA6MrXMXK6Zo/upRBKkRp0+fTOiKuNblzesA2U59rYo6SGA==}
+    peerDependencies:
+      '@react-native-community/datetimepicker': '>=6.7.0'
+      react-native: '>=0.65.0'
+
+  react-native-month-year-picker@1.9.0:
+    resolution: {integrity: sha512-VO1nzPQ3x1rW/qFKaTAIPSdj8KA+BD+/UCeoYwTfpliiu1QRmJvkItdWihYY8noP4qIvoXA0raBdFuL7sKN9Nw==}
+    peerDependencies:
+      react: '>= 16.11.0'
+      react-native: '>= 0.60.0'
+
   react-native-paper-dropdown@2.3.1:
     resolution: {integrity: sha512-IvcHTucAV5+fiX2IVMiVdBDKT6KHxycW0o9QzZe7bpmeZWmuCajHDnwG3OSBGlXhUxrrM3TC0/HJZHwORWGgQg==}
     peerDependencies:
@@ -3931,6 +3968,9 @@ packages:
     peerDependencies:
       react: '*'
       react-native: '*'
+
+  react-native-stepper-ui@0.0.9:
+    resolution: {integrity: sha512-SnG1r73Ka0v3588MafTRbIJ1I6IF+d/GswQSPW4LsFOjgecwkNsTMjPgcAU14gV4ymts/38JmqXBsmztwR113Q==}
 
   react-native-vector-icons@10.2.0:
     resolution: {integrity: sha512-n5HGcxUuVaTf9QJPs/W22xQpC2Z9u0nb0KgLPnVltP8vdUvOp6+R26gF55kilP/fV4eL4vsAHUqUjewppJMBOQ==}
@@ -6638,6 +6678,12 @@ snapshots:
       - encoding
       - supports-color
       - utf-8-validate
+
+  '@react-native-community/datetimepicker@8.0.1(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      invariant: 2.2.4
+      react: 18.2.0
+      react-native: 0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0)
 
   '@react-native/assets-registry@0.74.87': {}
 
@@ -9562,6 +9608,8 @@ snapshots:
 
   mkdirp@1.0.4: {}
 
+  moment@2.30.1: {}
+
   mrmime@1.0.1: {}
 
   ms@2.0.0: {}
@@ -9957,6 +10005,19 @@ snapshots:
       react-fast-compare: 3.2.2
       shallowequal: 1.1.0
 
+  react-native-modal-datetime-picker@18.0.0(@react-native-community/datetimepicker@8.0.1(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0)):
+    dependencies:
+      '@react-native-community/datetimepicker': 8.0.1(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
+      prop-types: 15.8.1
+      react-native: 0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0)
+
+  react-native-month-year-picker@1.9.0(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0):
+    dependencies:
+      invariant: 2.2.4
+      moment: 2.30.1
+      react: 18.2.0
+      react-native: 0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0)
+
   react-native-paper-dropdown@2.3.1(react-native-paper@5.12.5(react-native-safe-area-context@4.10.5(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-vector-icons@10.2.0)(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0):
     dependencies:
       react: 18.2.0
@@ -10000,6 +10061,8 @@ snapshots:
       react-freeze: 1.0.4(react@18.2.0)
       react-native: 0.74.5(@babel/core@7.25.9)(@babel/preset-env@7.25.9(@babel/core@7.25.9))(@types/react@18.2.79)(react@18.2.0)
       warn-once: 0.1.1
+
+  react-native-stepper-ui@0.0.9: {}
 
   react-native-vector-icons@10.2.0:
     dependencies:

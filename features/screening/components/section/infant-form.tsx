@@ -5,7 +5,6 @@ import { Dropdown } from "react-native-paper-dropdown";
 import { genders } from "../../constants/screening-constants";
 import { useScreeningStore } from "../../stores/screening-store";
 import { Gender } from "../../types/screening-types";
-import DatePicker from "react-native-date-picker";
 
 export const InfantForm = () => {
   const { infant, updateInfant } = useScreeningStore();
@@ -30,28 +29,14 @@ export const InfantForm = () => {
           <Dropdown
             label="Jenis Kelamin"
             mode="outlined"
-            value={infant.gender}
+            value={infant.jenis_kelamin}
             onSelect={gender =>
               updateInfant({
                 ...infant,
-                gender: (gender as Gender) || infant.gender,
+                jenis_kelamin: (gender as Gender) || infant.jenis_kelamin,
               })
             }
             options={genders.map(gender => ({ value: gender, label: gender }))}
-          />
-
-          {/* Tanggal Lahir Input */}
-          <TextInput
-            mode="outlined"
-            label="Tanggal Lahir"
-            keyboardType="default"
-          />
-
-          <DatePicker
-            date={new Date(infant.birthDate)}
-            onDateChange={date =>
-              updateInfant({ ...infant, birthDate: date.toISOString() })
-            }
           />
 
           {/* Berat Badan Saat Lahir Input */}
@@ -63,7 +48,21 @@ export const InfantForm = () => {
             onChangeText={weight =>
               updateInfant({
                 ...infant,
-                birthWeight: isNaN(Number(weight)) ? 0 : Number(weight),
+                birthWeight: isNaN(parseFloat(weight)) ? 0 : parseFloat(weight),
+              })
+            }
+          />
+
+          {/* Umur bulan Input */}
+          <TextInput
+            mode="outlined"
+            label="Umur (bulan)"
+            keyboardType="numeric"
+            value={infant.umur_bulan.toString()}
+            onChangeText={weight =>
+              updateInfant({
+                ...infant,
+                umur_bulan: isNaN(parseInt(weight)) ? 0 : parseInt(weight),
               })
             }
           />
@@ -77,7 +76,6 @@ export const InfantForm = () => {
         </Text>
 
         <View style={styles.fieldsSection}>
-          {/* Nama Ayah Input */}
           <TextInput
             mode="outlined"
             label="Nama Ayah"
@@ -85,7 +83,6 @@ export const InfantForm = () => {
             onChangeText={fatherName => updateInfant({ ...infant, fatherName })}
           />
 
-          {/* Nama Ibu Input */}
           <TextInput
             mode="outlined"
             label="Nama Ibu"

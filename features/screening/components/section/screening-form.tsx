@@ -1,119 +1,81 @@
 import * as React from "react";
-import { View, ScrollView } from "react-native";
-import { Text, Button, TextInput, Checkbox } from "react-native-paper";
-import MonthPicker from "react-native-month-year-picker";
-import { asiList } from "../../constants/screening-constants";
-import { Dropdown } from "react-native-paper-dropdown";
+import { View, ScrollView, StyleSheet } from "react-native";
+import { Text, TextInput } from "react-native-paper";
 import { useScreeningStore } from "../../stores/screening-store";
 
-export const InfantScreeningForm = () => {
-  const { monthlyScreenings, updateScreening } = useScreeningStore();
-
-  const selectedIndex = 0;
-  const screeningData = monthlyScreenings[selectedIndex];
-  const screeningDataDate = new Date(screeningData?.date ?? Date.now());
-
-  const [showPicker, setShowPicker] = React.useState(false);
-  const handleShowPicker = React.useCallback(
-    (value: boolean) => setShow(value),
-    [],
-  );
-  const handleMonthChange = React.useCallback(() => {}, []);
+export const ScreeningForm = () => {
+  const { screening, updateScreening } = useScreeningStore();
 
   return (
     <ScrollView>
       <View>
-        {/* Select Month Section */}
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginBottom: 24,
-          }}
-        >
-          <Text>Pilih Bulan & Tahun:</Text>
-          <Button onPress={() => setShowPicker(true)}>
-            {screeningDataDate.toLocaleDateString()}
-          </Button>
-        </View>
-
-        {/* <MonthPicker
-          selectedDate={screeningDataDate}
-          onMonthChange={handleMonthChange}
-          minimumDate={new Date(2000, 0)}
-          maximumDate={new Date(2100, 11)}
-        /> */}
-
         {/* Body Measurements Section */}
-        <View>
-          <Text style={{ fontWeight: "bold" }}>Pengukuran Badan</Text>
+        <View style={styles.fieldsSection}>
+          <Text variant="titleLarge" style={styles.title}>
+            Pengukuran Badan
+          </Text>
+
           <TextInput
-            label="Berat Badan Saat Lahir (kg)"
-            value={birthWeight}
-            onChangeText={text =>
-              handleDropdownChange(setBirthWeight, {
-                name: "birthWeight",
-                value: text,
-              })
-            }
+            mode="outlined"
             keyboardType="numeric"
-          />
-          <TextInput
-            label="Lingkar Tangan Atas (cm)"
-            value={upperArmCircumference}
-            onChangeText={text =>
-              handleDropdownChange(setUpperArmCircumference, {
-                name: "upperArmCircumference",
-                value: text,
-              })
-            }
-            keyboardType="numeric"
-          />
-          <TextInput
             label="Lingkar Kepala (cm)"
-            value={headCircumference}
+            value={screening.lingkar_kepala.toString()}
             onChangeText={text =>
-              handleDropdownChange(setHeadCircumference, {
-                name: "headCircumference",
-                value: text,
+              updateScreening({
+                ...screening,
+                lingkar_kepala: isNaN(parseFloat(text)) ? 0 : parseFloat(text),
               })
             }
-            keyboardType="numeric"
           />
           <TextInput
-            label="Lingkar Badan (cm)"
-            value={bodyCircumference}
+            mode="outlined"
+            keyboardType="numeric"
+            label="Berat Badan (kg)"
+            value={screening.berat_badan.toString()}
             onChangeText={text =>
-              handleDropdownChange(setBodyCircumference, {
-                name: "bodyCircumference",
-                value: text,
+              updateScreening({
+                ...screening,
+                berat_badan: isNaN(parseFloat(text)) ? 0 : parseFloat(text),
               })
             }
-            keyboardType="numeric"
           />
         </View>
 
         {/* ASI Section */}
-        <View>
-          <Text style={{ fontWeight: "bold", marginTop: 24 }}>ASI</Text>
+        {/* <View style={styles.asiSection}>
+          <Text variant="titleLarge" style={styles.title}>
+            ASI
+          </Text>
           <Dropdown
-            label="Jenis ASI"
+            label="Jenis Asi"
             mode="outlined"
-            value={asiType}
-            onChange={text =>
-              handleDropdownChange(setAsiType, { name: "asiType", value: text })
-            }
+            value={screeningData.asiType}
+            onSelect={text => handleInputChange("asiType", text as Asi)}
             options={asiList.map(asi => ({ value: asi, label: asi }))}
           />
-        </View>
-
-        {/* AI Recommendation Checkbox */}
-        <Checkbox.Item
-          label="Beri Rekomendasi AI"
-          status={willGetAiRecommendation ? "checked" : "unchecked"}
-          onPress={() => setWillGetAiRecommendation(!willGetAiRecommendation)}
-        />
+        </View> */}
       </View>
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  title: {
+    fontWeight: "bold",
+    marginBottom: 12,
+  },
+
+  asiSection: {
+    marginTop: 44,
+  },
+
+  aiSection: {
+    marginTop: 20,
+  },
+
+  fieldsSection: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 8,
+  },
+});
